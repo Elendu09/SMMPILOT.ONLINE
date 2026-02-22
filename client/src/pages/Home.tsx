@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, FileText, BookOpen, Mail } from "lucide-react";
+import { ArrowRight, FileText, BookOpen, Mail, Sparkles } from "lucide-react";
 import { FeatureSlider } from "@/components/FeatureSlider";
 import brandLogo from "@assets/09029ec8-96f2-496f-ac3b-82c337320011_1771747982097.png";
 
@@ -76,6 +76,16 @@ export default function Home() {
             <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
             <span className="hidden sm:inline-block">Contact</span>
           </a>
+          <a 
+            href="https://homeofsmm.com/features" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-sm md:text-base font-medium text-zinc-500 hover:text-zinc-900 flex items-center space-x-1.5 transition-colors group"
+            data-testid="link-features"
+          >
+            <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <span className="hidden sm:inline-block">Features</span>
+          </a>
         </nav>
       </motion.header>
 
@@ -99,7 +109,7 @@ export default function Home() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-7xl font-extrabold font-display text-zinc-900 tracking-tighter leading-[1.05] text-balance mb-4 md:mb-6"
           >
-            Launch your own <br className="hidden sm:block" /> 
+            Launch your own{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 to-zinc-500">
               SMM Panel
             </span>
