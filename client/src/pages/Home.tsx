@@ -1,7 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, LifeBuoy, Rocket } from "lucide-react";
+import { ArrowRight, BookOpen, LifeBuoy } from "lucide-react";
 import { FeatureSlider } from "@/components/FeatureSlider";
+import brandLogo from "@assets/09029ec8-96f2-496f-ac3b-82c337320011_1771747982097.png";
 
 export default function Home() {
   // Staggered animation variants
@@ -38,13 +38,11 @@ export default function Home() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="w-full px-6 py-5 md:px-12 md:py-8 flex items-center justify-between z-10 shrink-0"
       >
-        <div className="flex flex-col">
-          <div className="flex items-center space-x-2">
-            <Rocket className="w-5 h-5 text-zinc-900" />
-            <h1 className="text-xl md:text-2xl font-extrabold font-display tracking-tight text-zinc-900">
-              SMMPILOT
-            </h1>
-          </div>
+        <div className="flex items-center space-x-2.5">
+          <img src={brandLogo} alt="SMMPILOT" className="w-8 h-8 md:w-9 md:h-9 rounded-lg object-cover" />
+          <h1 className="text-xl md:text-2xl font-extrabold font-display tracking-tight text-zinc-900">
+            SMMPILOT
+          </h1>
         </div>
 
         <nav className="flex items-center space-x-4 md:space-x-8">
