@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, LifeBuoy } from "lucide-react";
+import { ArrowRight, FileText, BookOpen, Mail } from "lucide-react";
 import { FeatureSlider } from "@/components/FeatureSlider";
 import brandLogo from "@assets/09029ec8-96f2-496f-ac3b-82c337320011_1771747982097.png";
 
@@ -45,20 +45,36 @@ export default function Home() {
           </h1>
         </div>
 
-        <nav className="flex items-center space-x-4 md:space-x-8">
+        <nav className="flex items-center space-x-3 md:space-x-6">
           <a 
-            href="#" 
+            href="https://homeofsmm.com/docs" 
+            target="_blank" 
+            rel="noopener noreferrer"
             className="text-sm md:text-base font-medium text-zinc-500 hover:text-zinc-900 flex items-center space-x-1.5 transition-colors group"
+            data-testid="link-docs"
+          >
+            <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <span className="hidden sm:inline-block">Docs</span>
+          </a>
+          <a 
+            href="https://homeofsmm.com/blog" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-sm md:text-base font-medium text-zinc-500 hover:text-zinc-900 flex items-center space-x-1.5 transition-colors group"
+            data-testid="link-blog"
           >
             <BookOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
             <span className="hidden sm:inline-block">Blog</span>
           </a>
           <a 
-            href="#" 
+            href="https://homeofsmm.com/contact" 
+            target="_blank" 
+            rel="noopener noreferrer"
             className="text-sm md:text-base font-medium text-zinc-500 hover:text-zinc-900 flex items-center space-x-1.5 transition-colors group"
+            data-testid="link-contact"
           >
-            <LifeBuoy className="w-4 h-4 group-hover:scale-110 transition-transform" />
-            <span className="hidden sm:inline-block">Support</span>
+            <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            <span className="hidden sm:inline-block">Contact</span>
           </a>
         </nav>
       </motion.header>
@@ -85,7 +101,7 @@ export default function Home() {
           >
             Launch your own <br className="hidden sm:block" /> 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 to-zinc-500">
-              SMM Empire
+              SMM Panel
             </span>
           </motion.h2>
 
