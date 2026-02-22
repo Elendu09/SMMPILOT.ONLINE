@@ -12,19 +12,19 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --primary: 235 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 235 100% 96%;
+    --secondary-foreground: 235 100% 50%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 235 100% 96%;
+    --accent-foreground: 235 100% 50%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --ring: 235 100% 50%;
     --radius: 0.75rem;
 
     --font-display: 'Plus Jakarta Sans', sans-serif;
@@ -34,7 +34,6 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
-    /* Prevent pull-to-refresh and bounce effects on mobile */
     overscroll-behavior-y: none;
     overflow: hidden;
   }
@@ -49,8 +48,7 @@
   .text-balance {
     text-wrap: balance;
   }
-  
-  /* Custom utility to perfectly hide scrollbars if they ever attempt to appear */
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -60,7 +58,43 @@
   }
 }
 
-/* Base button animations for extreme polish */
 button, a {
   @apply transition-all duration-300 ease-out;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@media (min-width: 768px) {
+  .grid-bg {
+    background-size: 60px 60px;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.2; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s ease-in-out infinite;
 }
