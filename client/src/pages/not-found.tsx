@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldAlert } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -15,148 +15,132 @@ export default function NotFound() {
         transition={{ type: "spring", stiffness: 260, damping: 22 }}
         className="flex flex-col items-center text-center max-w-xl w-full"
       >
-        {/* Animated 404 SVG */}
-        <div className="w-full max-w-sm mb-6 select-none" aria-hidden="true">
-          <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-            {/* Animated shield icon */}
+        {/* Animated Security Lock SVG */}
+        <div className="w-32 h-40 mb-8 select-none" aria-hidden="true">
+          <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+            {/* Outer pulsing ring */}
+            <motion.circle
+              cx="60" cy="80" r="50"
+              fill="none" stroke="#0000FF" strokeWidth="1.5" strokeOpacity="0.3"
+              animate={{ 
+                strokeOpacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Secondary rotating ring */}
             <motion.g
-              initial={{ opacity: 0, scale: 0.4 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.05, type: "spring", stiffness: 300, damping: 18 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              style={{ transformOrigin: "60px 80px" }}
             >
-              <motion.rect
-                x="138" y="38" width="44" height="44" rx="10"
-                fill="#0000FF" fillOpacity="0.08"
-                animate={{ fillOpacity: [0.06, 0.14, 0.06] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              <circle
+                cx="60" cy="80" r="45"
+                fill="none" stroke="#0000FF" strokeWidth="0.8" strokeDasharray="3,2" strokeOpacity="0.2"
               />
-              <motion.path
-                d="M160 44 L172 49 L172 61 C172 68 166 73 160 75 C154 73 148 68 148 61 L148 49 Z"
-                fill="#0000FF" fillOpacity="0.15"
-                stroke="#0000FF" strokeWidth="1.5"
+            </motion.g>
+
+            {/* Lock body */}
+            <motion.g
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 300, damping: 18 }}
+            >
+              {/* Shackle (top curved part) */}
+              <path
+                d="M 40 50 Q 40 25 60 25 Q 80 25 80 50"
+                fill="none"
+                stroke="#0000FF"
+                strokeWidth="4"
+                strokeLinecap="round"
                 strokeLinejoin="round"
-                animate={{ strokeOpacity: [0.4, 1, 0.4] }}
+              />
+
+              {/* Body background */}
+              <rect x="35" y="50" width="50" height="60" rx="6" fill="#0000FF" fillOpacity="0.08" stroke="#0000FF" strokeWidth="3" strokeLinejoin="round" />
+
+              {/* Keyhole circle */}
+              <motion.circle
+                cx="60" cy="75" r="6"
+                fill="none" stroke="#0000FF" strokeWidth="2.5"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  strokeOpacity: [0.6, 1, 0.6]
+                }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               />
+
+              {/* Keyhole bottom */}
               <motion.path
-                d="M155 59.5 L158.5 63 L165.5 56"
-                fill="none" stroke="#0000FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
+                d="M 60 81 L 60 92"
+                stroke="#0000FF"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                animate={{ 
+                  strokeOpacity: [0.6, 1, 0.6]
+                }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              {/* Glow effect */}
+              <motion.rect 
+                x="35" y="50" width="50" height="60" rx="6"
+                fill="none" stroke="#0000FF" strokeWidth="1" strokeOpacity="0"
+                animate={{ strokeOpacity: [0, 0.4, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.g>
 
-            {/* "4" left */}
-            <motion.text
-              x="28" y="100"
-              fontFamily="'Plus Jakarta Sans', sans-serif"
-              fontWeight="900"
-              fontSize="92"
-              fill="#0000FF"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15, type: "spring", stiffness: 220, damping: 20 }}
-            >
-              4
-            </motion.text>
-
-            {/* "0" middle with pulse ring */}
-            <motion.g
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.28, type: "spring", stiffness: 260, damping: 18 }}
-            >
-              <motion.ellipse
-                cx="160" cy="73" rx="38" ry="42"
-                fill="none" stroke="#0000FF" strokeWidth="1"
-                animate={{ r: [36, 44, 36], opacity: [0.2, 0.5, 0.2] }}
-                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+            {/* Light beams */}
+            <motion.g opacity="0.4">
+              <motion.line
+                x1="60" y1="10" x2="60" y2="20"
+                stroke="#0000FF" strokeWidth="1.5" strokeLinecap="round"
+                animate={{ opacity: [0.2, 0.6, 0.2] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
-              <motion.text
-                x="130" y="100"
-                fontFamily="'Plus Jakarta Sans', sans-serif"
-                fontWeight="900"
-                fontSize="92"
-                fill="#111"
-              >
-                0
-              </motion.text>
+              <motion.line
+                x1="95" y1="40" x2="102" y2="47"
+                stroke="#0000FF" strokeWidth="1.5" strokeLinecap="round"
+                animate={{ opacity: [0.2, 0.6, 0.2] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+              />
+              <motion.line
+                x1="25" y1="40" x2="18" y2="47"
+                stroke="#0000FF" strokeWidth="1.5" strokeLinecap="round"
+                animate={{ opacity: [0.2, 0.6, 0.2] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+              />
             </motion.g>
-
-            {/* "4" right */}
-            <motion.text
-              x="228" y="100"
-              fontFamily="'Plus Jakarta Sans', sans-serif"
-              fontWeight="900"
-              fontSize="92"
-              fill="#0000FF"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15, type: "spring", stiffness: 220, damping: 20 }}
-            >
-              4
-            </motion.text>
-
-            {/* Animated underline */}
-            <motion.line
-              x1="20" y1="108" x2="300" y2="108"
-              stroke="#0000FF" strokeWidth="2.5" strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ delay: 0.55, duration: 0.7, ease: "easeOut" }}
-            />
-
-            {/* Scanning glitch line */}
-            <motion.rect
-              x="20" y="20" width="280" height="2" rx="1"
-              fill="#0000FF" fillOpacity="0.18"
-              animate={{ y: [20, 106, 20], fillOpacity: [0, 0.22, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            />
           </svg>
         </div>
-
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mb-4"
-        >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#0000FF]/5 text-[#0000FF] border border-[#0000FF]/15">
-            <ShieldAlert className="w-3.5 h-3.5" />
-            Access Denied
-          </span>
-        </motion.div>
 
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, type: "spring", stiffness: 260, damping: 22 }}
+          transition={{ delay: 0.35, type: "spring", stiffness: 260, damping: 22 }}
           className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight mb-3"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Trying to hack{" "}
-          <span className="text-[#0000FF]">our servers?</span>
+          This area is <span className="text-[#0000FF]">locked</span>
         </motion.h1>
 
         {/* Subtext */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.55 }}
+          transition={{ delay: 0.45 }}
           className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8 max-w-sm"
         >
-          Nice try. This page doesn't exist — and our systems noticed. Head back to safety before things get suspicious.
+          The page you're looking for doesn't exist or is restricted. Return to our main site to continue.
         </motion.p>
 
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65 }}
+          transition={{ delay: 0.55 }}
           className="relative group"
         >
           <div className="absolute -inset-1.5 bg-[#0000FF]/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition duration-500" />
@@ -167,7 +151,7 @@ export default function NotFound() {
             className="relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#0000FF] text-white rounded-2xl font-bold text-sm shadow-lg shadow-[#0000FF]/25 hover:shadow-xl hover:shadow-[#0000FF]/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
             data-testid="button-go-home"
           >
-            Back to safety
+            Go to homeofsmm.com
             <ArrowRight className="w-4 h-4" />
           </a>
         </motion.div>
