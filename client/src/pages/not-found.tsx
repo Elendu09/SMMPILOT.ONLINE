@@ -182,7 +182,7 @@ export default function NotFound() {
           transition={{ delay: 0.65 }}
           className="text-gray-500 text-sm sm:text-base leading-relaxed mb-10 max-w-sm"
         >
-          This page doesn't exist or is restricted. Head back to our main site and continue from there.
+          Are you trying to hack through our servers? Nice try — but this page doesn't exist and our systems already noticed. Nothing to see here.
         </motion.p>
 
         {/* CTA */}
