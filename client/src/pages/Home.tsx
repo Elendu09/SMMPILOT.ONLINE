@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, FileText, BookOpen, Mail, Sparkles } from "lucide-react";
 import { FeatureSlider } from "@/components/FeatureSlider";
-import brandLogo from "@assets/09029ec8-96f2-496f-ac3b-82c337320011_1771747982097.png";
+
 
 export default function Home() {
   const containerVariants = {
@@ -39,7 +39,12 @@ export default function Home() {
         className="w-full px-4 py-4 md:px-12 md:py-6 flex items-center justify-between z-10 shrink-0"
       >
         <div className="flex items-center space-x-2.5">
-          <img src={brandLogo} alt="SMMPILOT" className="w-8 h-8 md:w-10 md:h-10 rounded-xl object-cover" data-testid="img-logo" />
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-[#0000FF] flex items-center justify-center shrink-0" data-testid="img-logo">
+              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" aria-hidden="true">
+                <path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+                <path d="M12 2v15M3 7l9 5 9-5" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+              </svg>
+            </div>
           <h1 className="text-lg md:text-2xl font-extrabold tracking-tight text-gray-900" style={{ fontFamily: "var(--font-display)" }}>
             SMMPILOT
           </h1>
